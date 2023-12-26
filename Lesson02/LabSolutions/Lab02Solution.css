@@ -103,7 +103,7 @@ ol li{
   padding: 10px 0;
 }
 img{
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
   border-radius: 1rem;
   margin: 1rem;
 }
