@@ -45,8 +45,15 @@
   border: 3px double black;
   background-color: #eeeeee;
   margin: 0 auto;
+  text-align: center;
+  margin-top: 1rem;
 }
 
 .appointmentsTable thead {
-  font-size: 26px;
+  font-size: 20px;
+}
+
+.appointmentsTable td {
+  padding: 10px;
+  text-transform: uppercase;
 }
