@@ -12,7 +12,6 @@
 // JSX
 // JSX Documentation: https://reactjs.org/docs/introducing-jsx.html
 // functional programming
-// class based programming
 
 /* ----------------------------------------------------- */
 // Please do not alter the existing code unless instructed to do so.
@@ -37,15 +36,15 @@
  * Goal: Pass information using props from our App.js to a new component, Appointments.js.
  *
  * Step 1: Create a new component in your src folder called 'Appointments.js'
- *         Create the base format for a class based component in Appointments.js
+ *         Create the base format for a Function based component in Appointments.js
  *
- * Step 2: Render your Appointments.js component in your App.js component.         
+ * Step 2: Import your Appointments.js component in your App.js component.         
  *
  * Step 3: Let's hold our information in our App.js, and pass that information
  *         as a prop to our <Appointments/> component.
  *
  *         Copy/paste the code below our imports in App.js:
- *                (If you hold the middle mouse button and drag,
+ *                (If you hold the left mouse button and drag,
  *                 it should highlight the text to copy/paste)
  *
  *                 let allCustomers = [
@@ -71,22 +70,14 @@
  *
  *         Does this look familiar? <img src="someUrl.com"/> ... src is also a prop/property.
  *
- *         Hint: <Appointments customers={allCustomers} />
+ *         Hint: <Appointments customers={customers} />
  *
- * Step 5: In class based components, we hold state inside of the constructor(){}.
- *         Because we want our Appointments.js to absorb information from App.js, we also need super()
- *         inside of the constructor.
- *         In Appointments.js, above your render(), create a constructor that will hold our state.
- *
- * Step 6: Pass the word: props  into your constructor argument, and your super argument.
- *         console.log(props) at the bottom of your constructor. What data type is it?
- *         It should be an object.
- *
- *         Inside the constructor in Appointments.js, set
- *         this.customersArray = props.customers
- *
- *         console.log(this.customersArray) inside the constructor.
- *         Now we can use this.customersArray in our Appointments.js!
+ * Step 5: In function based components we hold state inside the function, usually in the first few lines of the function. We also must import state from react. 
+ *         Then in the declaration line of the function recieving the data (Appointments.js) we will take in the props.
+ * 
+ *          For more information on Props: https://www.w3schools.com/react/react_props.asp
+ *          For more information on useState: https://www.w3schools.com/react/react_usestate.asp
+ *                    
  *
  * */
 
@@ -94,23 +85,24 @@
 
 /** Note: Feel free to copy/paste this into your Appointments.js for easier visibility.
  *
- * Goal: Create a table that renders allCustomers
+ * Goal: Create a table that renders customers.
  *
  * Step 1: Create a table with a thead/tbody. The thead should have a row with
  *         3 th elements: First Name, Last Name, and Appointment Time.
  * Step 2: Inside of your tbody, create a <tr> element that will .map() 
- *         over this.customersArray and return 
+ *         over customers and return 
  *         3 <td> elements, one for firstName, lastName, and appointmentTime.
  *
  *         Check the README for a .map() hint.
  * Step 3: Style it with css using the App.css file!
- *
+ *          Some things you may want to do: Adjust text alignment, colors, border, font-sizes. 
  */
 
 /* -- ALL YOUR COMPONENT/STYLE IMPORTS HERE -- */
 import './App.css'
 import Nav from './Nav'
 import Appointments from './Appointments.js'
+import {useState} from 'react'
 
 let date = new Date()
 
@@ -138,6 +130,10 @@ let allCustomers = [
 ]
 
 function App() {
+  const [customers, setCustomers] = useState(allCustomers)// notice I set the initial state
+  // to be what the allCustomers is. Then if state is updated it will only update state, it 
+  // will no longer change what the allCustomers variable was set to. 
+
   return (
     <div className="App">
       <Nav />
@@ -145,7 +141,7 @@ function App() {
         <h1>Welcome, {singleUser.name}</h1>
         <p>Todays date is: {singleUser.todaysDate}</p>
       </section>
-      <Appointments customers={allCustomers}/>
+      <Appointments customers={customers}/>
     </div>
   )
 }
