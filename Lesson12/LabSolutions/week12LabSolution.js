@@ -130,12 +130,15 @@ Part 3: POST and adding new students`
  *
  * ↓ YOUR CODE HERE ↓ */
 
-$('#submitStudent').click(function () {
-  $.post(STUDENT_ROSTER_URL, {
-    fullName: $('#newName').val(),
-    researchAssignment: $('#newAssignment').val(),
-  })
-})
+$("#submitStudent").click(function () {
+  $.post(
+    STUDENT_ROSTER_URL,
+    JSON.stringify({
+      fullName: $("#newName").val(),
+      researchAssignment: $("#newAssignment").val(),
+    })
+  );
+});
 
 /*------------------------ Part 4: HTTP Verb: DELETE ------------------------*/
 console.log(

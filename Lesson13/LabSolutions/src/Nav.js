@@ -1,7 +1,8 @@
-import React, {Component} from 'react'
+// In the past importing React as show in the commented out section on line 2, was was needed. In working with React 18+ you no longer need it outside the App.js or Index.js file.  
+// import react from 'react'
 
-export default class Nav extends Component {
-  render() {
+function Nav() {
+  
     return (
       <nav className="navBar">
         <ul>
@@ -11,5 +12,6 @@ export default class Nav extends Component {
         </ul>
       </nav>
     )
-  }
-}
+  };
+
+export default Nav;
